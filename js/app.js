@@ -37,12 +37,14 @@ const switchTab = (id) => {
         document.getElementById( "liked" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
     } else if (id === "liked") {
+      // ocument.getElementById( "liked").innerHTML = '';
         document.getElementById( "liked" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
 
         displayLikedPosts();
     } else {
+        document.getElementById( "reported" ).innerHTML = '';
         document.getElementById( "reported" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "liked" ).style.display = "none";
@@ -52,7 +54,8 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  // console.log(post);
+  // console.log(post.comments);
+    // console.log(post);
     const image = post.image;
 
     const div = document.createElement( "article" );
@@ -61,10 +64,10 @@ const createPost = (post) => {
               <div class="post__header">
                 <div class="post__profile">
                   <a
-                    href="${post.userImage}"
+                    href=""
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${post.userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -122,9 +125,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
+                         <img class="post__likes-avatar" src="${post.userImage}" alt="User Picture" /> 
                       </a>
-                      ${post.comments?.text}
+                      ${post.comments[0].text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
@@ -154,7 +157,8 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
+    reportPost.innerHTML=''
+    reportedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
     });
