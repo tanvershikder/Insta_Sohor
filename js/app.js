@@ -54,7 +54,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  // console.log(post.comments);
+  console.log(post.comments);
     // console.log(post);
     const image = post.image;
 
@@ -125,7 +125,7 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                         <img class="post__likes-avatar" src="${post.userImage}" alt="User Picture" /> 
+                      ${post.comments[0].user}
                       </a>
                       ${post.comments[0].text}
                     </small>
