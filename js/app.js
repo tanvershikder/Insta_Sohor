@@ -37,7 +37,7 @@ const switchTab = (id) => {
         document.getElementById( "liked" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
     } else if (id === "liked") {
-      // ocument.getElementById( "liked").innerHTML = '';
+        document.getElementById( "liked").innerHTML = '';
         document.getElementById( "liked" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
@@ -149,6 +149,7 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    likedPosts.innerHTML= ''
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
